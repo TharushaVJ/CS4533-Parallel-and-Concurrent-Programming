@@ -1,4 +1,4 @@
-# Linked List Implementations
+# Lab 1 - Linked List Implementations
 
 This project demonstrates different approaches to implementing a linked list:
 
