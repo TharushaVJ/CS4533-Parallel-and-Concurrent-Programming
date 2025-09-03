@@ -1,10 +1,5 @@
-#include <stdio.h>
 #include <stdlib.h>
-
-struct list_node_s{
-    int data;
-    struct list_node_s* next;
-};
+#include "linked_list.h"
 
 /* Member */
 int member(int value, struct list_node_s* head_p){
