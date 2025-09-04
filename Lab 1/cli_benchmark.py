@@ -29,6 +29,7 @@ for _ in range(40):
 if elapsed_times:
     avg_time = sum(elapsed_times) / len(elapsed_times)
     std_dev = statistics.stdev(elapsed_times)
+    print(f"| {implementation} | Threads: {threads} | n: {number_of_nodes} | m: {number_of_operations} | mMember: {mMember} | mInsert: {mInsert} | mDelete: {mDelete} |")
     print(f"Average execution time: {avg_time:.9f} seconds")
     print(f"Standard deviation: {std_dev:.9f} seconds")
 else:
