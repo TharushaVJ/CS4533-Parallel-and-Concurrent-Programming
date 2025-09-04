@@ -52,12 +52,12 @@ The program prints a JSON summary of the run, including:
 
 ## Benchmarking with `cli_benchmark.py`
 
-To automate benchmarking and collect statistics, use the provided `cli_benchmark.py` script. This script runs the `lablist` executable 40 times with specified parameters, parses the JSON output, and reports the average and standard deviation of the elapsed execution time.
+To automate benchmarking and collect statistics, use the provided `cli_benchmark.py` script. This script runs the `lablist` executable with specified parameters, parses the JSON output, and reports the average and standard deviation of the elapsed execution time.
 
 **Usage:**
 
-1. Make sure `lablist` is built and available in the `Lab 1` directory.
-2. Edit `cli_benchmark.py` to set your desired parameters (implementation, threads, etc.).
+1. Make sure `lablist` is built and available in the `Lab 1` directory (if not refer Build Instructions).
+2. Edit `cli_benchmark.py` to set your desired parameters (implementation, threads, trial count etc.).
 3. Run the script:
 
 ```sh
