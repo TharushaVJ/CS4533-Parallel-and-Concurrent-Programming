@@ -2,6 +2,7 @@
 #define OPERATIONS_H
 
 #include <stdlib.h>
+#include <stddef.h>
 
 typedef enum
 {

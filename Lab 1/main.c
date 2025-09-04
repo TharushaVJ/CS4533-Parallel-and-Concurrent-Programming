@@ -2,9 +2,10 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdint.h>
+#include <stddef.h>
 #include "include/cli.h"
-#include "include/list.h"
-#include "include/ops.h"
+#include "include/linked_list.h"
+#include "include/operations.h"
 #include "include/util.h"
 #include "include/worker.h"
 
@@ -24,10 +25,10 @@ int main(int argc, char** argv) {
     sync_init(P.impl);
 
     /* Linked list head */
-    linked_list_s* head = NULL;
+    list_node_s* head = NULL;
 
     /* 1) Populate initial list (excluded from timing) */
-    list_populate_initial(head, P.n, &seed);
+    list_populate_initial(&head, P.n, &seed);
 
     /* 2) Pre-generate ops (excluded from timing) */
     operation_t* ops = ops_generate(P.m, P.p_member, P.p_insert, P.p_delete, &seed);
@@ -37,15 +38,15 @@ int main(int argc, char** argv) {
     struct timespec t0, t1;
     clock_gettime(CLOCK_MONOTONIC, &t0);
 
-    if (P.impl == 0) execute_ops_serial(head, ops, (size_t)P.m);
-    else             execute_ops_parallel(head, ops, (size_t)P.m, P.impl, P.threads);
+    if (P.impl == 0) execute_ops_serial(&head, ops, (size_t)P.m);
+    else             execute_ops_parallel(&head, ops, (size_t)P.m, P.impl, P.threads);
 
     clock_gettime(CLOCK_MONOTONIC, &t1);
     double elapsed = timespec_diff_sec(t0, t1);
 
     /* Output */
     const char* impl_name = (P.impl==0?"serial":(P.impl==1?"mutex":"rwlock"));
-    printf("{\"impl\":\"%s\",\"threads\":%d,\"n\":%d,\"m\":%d,"
+    printf("{\"impl\":\"%s\",\"threads\":%d,\"n\":%zu,\"m\":%zu,"
            "\"mMember\":%.6f,\"mInsert\":%.6f,\"mDelete\":%.6f,"
            "\"elapsed_sec\":%.9f}\n",
            impl_name, (P.impl==0?1:P.threads), P.n, P.m,

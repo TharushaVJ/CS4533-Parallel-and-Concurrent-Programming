@@ -1,5 +1,8 @@
+#define _GNU_SOURCE
 #include <stdlib.h>
+#include <stddef.h>
 #include "operations.h"
+
 // Shuffle the operations array using Fisher-Yates algorithm
 void ops_shuffle(operation_t* ops, size_t count, unsigned int *seed) {
 	if (!ops || count < 2) return;

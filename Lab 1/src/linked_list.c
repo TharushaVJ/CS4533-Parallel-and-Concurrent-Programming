@@ -1,4 +1,6 @@
+#define _GNU_SOURCE
 #include <stdlib.h>
+#include <stddef.h>
 #include "linked_list.h"
 
 /* Member */
@@ -67,16 +69,16 @@ int delete(int value, struct list_node_s** head_pp){
     }
 }
 
-void list_free(linked_list_s* head) {
-    linked_list_s* c = head;
+void list_free(list_node_s* head) {
+    list_node_s* c = head;
     while (c) { 
-        linked_list_s* n = c->next; 
+        list_node_s* n = c->next; 
         free(c); c = n; 
     }
     head = NULL;
 }
 
-void list_populate_initial(linked_list_s* head, int n, unsigned int* seed) {
+void list_populate_initial(list_node_s** head, int n, unsigned int* seed) {
     int used = 0; // count of unique keys used
     unsigned char* seen = (unsigned char*)calloc(65536, 1);
     if (!seen) { 
@@ -86,7 +88,7 @@ void list_populate_initial(linked_list_s* head, int n, unsigned int* seed) {
         int value = (int)(rand_r(seed) & 0xFFFF);
         if (!seen[value]) { 
             seen[value] = 1; 
-            list_insert(value, &head); 
+            insert(value, head); 
             ++used; 
         }
     }

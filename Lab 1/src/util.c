@@ -1,4 +1,5 @@
 #include "util.h"
+#include <stddef.h>
 
 double timespec_diff_sec(struct timespec a, struct timespec b) {
     double sec  = (double)(b.tv_sec  - a.tv_sec);

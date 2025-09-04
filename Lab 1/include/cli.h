@@ -2,6 +2,7 @@
 #define CLI_H
 
 #include <stdlib.h>
+#include <stddef.h>
 
 typedef struct {
     int impl;              // 0: serial, 1: mutex, 2: rwlock 
