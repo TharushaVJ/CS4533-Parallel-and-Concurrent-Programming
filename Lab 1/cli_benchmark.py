@@ -9,7 +9,7 @@ number_of_operations = 10000
 mMember = 0.99
 mInsert = 0.005
 mDelete = 0.005
-seed = 0  
+seed = None  
 
 COMMAND = ["./lablist", "--impl", implementation, "--threads", str(threads), "--n", str(number_of_nodes), "--m", str(number_of_operations), "--mMember", str(mMember), "--mInsert", str(mInsert), "--mDelete", str(mDelete)]
 if seed is not None:
