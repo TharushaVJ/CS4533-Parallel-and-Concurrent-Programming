@@ -8,7 +8,7 @@
 
 
 typedef struct {
-    linked_list_s* head ;   // Pointer to the head of the linked list
+    linked_list_s* head;    // Pointer to the head of the linked list
     opertation_t* ops;      // Pointer to the first operation
     int ops_count;          // Number of operations
     int impl;               // 0: serial, 1: mutex, 2: rwlock 

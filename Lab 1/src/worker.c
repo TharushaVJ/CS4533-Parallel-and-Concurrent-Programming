@@ -23,6 +23,7 @@ void sync_destroy(int impl){
     }
 }
 
+/* Worker function for the thread */
 static void* worker_fn (void* args){
     thread_data_t* t = (thread_data_t*) args;
     for (size_t i = 0; i< t->ops_count; i++){
@@ -71,7 +72,6 @@ static void* worker_fn (void* args){
     return NULL;
 }
 
-
 void execute_ops_serial(linked_list_s* head, operation_t* ops, size_t ops_count){
     thread_data_t t = {
         .head = head,
@@ -82,6 +82,24 @@ void execute_ops_serial(linked_list_s* head, operation_t* ops, size_t ops_count)
     worker_fn(&t);
 }
 
-void execute_ops_parallel(operation_t* ops, size_t ops_count, int impl, int threads){
-    continue;
+void execute_ops_parallel(linked_list_s* head, operation_t* ops, size_t ops_count, int impl, int threads){
+    if (threads < 1) threads = 1;
+    pthread_t* th = (pthread_t*)malloc(sizeof(pthread_t) * (size_t)threads);
+    thread_arg_t* args = (thread_arg_t*)malloc(sizeof(thread_arg_t) * (size_t)threads);
+    size_t base = 0;
+
+    for (int i = 0; i < threads; ++i) {
+        size_t remain = ops_count - base;
+        size_t chunk = remain / (size_t)(threads - i);
+        args[i].head = head;
+        args[i].ops = &ops[base];
+        args[i].ops_count = chunk;
+        args[i].impl = impl;
+        base += chunk;
+    }
+    for (int i = 0; i < threads; ++i) pthread_create(&th[i], NULL, worker_fn, &args[i]);
+    for (int i = 0; i < threads; ++i) pthread_join(th[i], NULL);
+
+    free(th);
+    free(args);
 }
