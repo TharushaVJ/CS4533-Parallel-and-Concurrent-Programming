@@ -2,7 +2,19 @@ import subprocess
 import json
 import statistics
 
-COMMAND = ["./lablist", "--impl", "mutex", "--threads", "4", "--n", "1000", "--m", "10000", "--mMember", "0.99", "--mInsert", "0.005", "--mDelete", "0.005"] 
+implementation = "mutex"
+threads = 4
+number_of_nodes = 1000
+number_of_operations = 10000
+mMember = 0.99
+mInsert = 0.005
+mDelete = 0.005
+seed = 0  
+
+COMMAND = ["./lablist", "--impl", implementation, "--threads", str(threads), "--n", str(number_of_nodes), "--m", str(number_of_operations), "--mMember", str(mMember), "--mInsert", str(mInsert), "--mDelete", str(mDelete)]
+if seed > 0:
+    COMMAND += ["--seed", str(seed)]
+    
 elapsed_times = []
 
 for _ in range(40):
