@@ -2,8 +2,8 @@ import subprocess
 import json
 import statistics
 
-implementation = "mutex"
-threads = 4
+implementation = "serial" # Options: "serial", "rwlock", "mutex"
+threads = 1
 number_of_nodes = 1000
 number_of_operations = 10000
 mMember = 0.99
@@ -12,7 +12,7 @@ mDelete = 0.005
 seed = 0  
 
 COMMAND = ["./lablist", "--impl", implementation, "--threads", str(threads), "--n", str(number_of_nodes), "--m", str(number_of_operations), "--mMember", str(mMember), "--mInsert", str(mInsert), "--mDelete", str(mDelete)]
-if seed > 0:
+if seed is not None:
     COMMAND += ["--seed", str(seed)]
     
 elapsed_times = []
