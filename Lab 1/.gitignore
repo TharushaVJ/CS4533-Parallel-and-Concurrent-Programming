@@ -1,0 +1,34 @@
+# Compiled object files
+*.o
+
+# Executables
+lablist
+a.out
+
+# Libraries
+*.so
+*.dylib
+*.dll
+
+# Build directories
+/build/
+bin/
+obj/
+
+# Debugging / profiling files
+*.log
+*.out
+*.err
+*.core
+core
+
+# Editor / IDE stuff
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS-specific
+.DS_Store
+Thumbs.db
