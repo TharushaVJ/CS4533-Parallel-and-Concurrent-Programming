@@ -2,14 +2,18 @@ import subprocess
 import json
 import statistics
 
-implementation = "serial" # Options: "serial", "rwlock", "mutex"
-threads = 1
-number_of_nodes = 1000
-number_of_operations = 10000
-mMember = 0.99
-mInsert = 0.005
-mDelete = 0.005
-seed = None  
+# Configuration parameters
+# You can modify these parameters as needed
+implementation = "serial"           # Options: "serial", "mutex", "rwlock"
+threads = 1                         # Number of threads (ignored for serial implementation)
+number_of_nodes = 1000              # Initial number of nodes in the list
+number_of_operations = 10000        # Total number of operations to perform
+mMember = 0.99                      # Fraction of member operations
+mInsert = 0.005                     # Fraction of insert operations
+mDelete = 0.005                     # Fraction of delete operations
+seed = None                         # Random seed (None for random seed)
+trial_count = 40                    # Number of trials to run
+
 
 COMMAND = ["./lablist", "--impl", implementation, "--threads", str(threads), "--n", str(number_of_nodes), "--m", str(number_of_operations), "--mMember", str(mMember), "--mInsert", str(mInsert), "--mDelete", str(mDelete)]
 if seed is not None:
@@ -17,7 +21,7 @@ if seed is not None:
     
 elapsed_times = []
 
-for _ in range(40):
+for _ in range(trial_count):
     result = subprocess.run(COMMAND, capture_output=True, text=True)
     try:
         output_json = json.loads(result.stdout.strip())
