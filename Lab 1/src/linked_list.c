@@ -66,3 +66,29 @@ int delete(int value, struct list_node_s** head_pp){
         return 0;
     }
 }
+
+void list_free(linked_list_s* head) {
+    linked_list_s* c = head;
+    while (c) { 
+        linked_list_s* n = c->next; 
+        free(c); c = n; 
+    }
+    head = NULL;
+}
+
+void list_populate_initial(linked_list_s* head, int n, unsigned int* seed) {
+    int used = 0; // count of unique keys used
+    unsigned char* seen = (unsigned char*)calloc(65536, 1);
+    if (!seen) { 
+        perror("calloc"); exit(1); 
+    }
+    while (used < n) {
+        int value = (int)(rand_r(seed) & 0xFFFF);
+        if (!seen[value]) { 
+            seen[value] = 1; 
+            list_insert(value, &head); 
+            ++used; 
+        }
+    }
+    free(seen);
+}
