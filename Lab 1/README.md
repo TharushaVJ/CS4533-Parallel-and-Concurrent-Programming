@@ -17,7 +17,7 @@ From the `Lab 1` directory, run:
 make
 ```
 
-This will build the executable (usually named `lablist`).
+This will build the executable (Named `lablist`).
 
 ## Usage
 
@@ -49,6 +49,24 @@ The program prints a JSON summary of the run, including:
 - Thread count
 - Operation counts and fractions
 - Elapsed time
+
+## Benchmarking with `cli_benchmark.py`
+
+To automate benchmarking and collect statistics, use the provided `cli_benchmark.py` script. This script runs the `lablist` executable 40 times with specified parameters, parses the JSON output, and reports the average and standard deviation of the elapsed execution time.
+
+**Usage:**
+
+1. Make sure `lablist` is built and available in the `Lab 1` directory.
+2. Edit `cli_benchmark.py` to set your desired parameters (implementation, threads, etc.).
+3. Run the script:
+
+```sh
+python3 cli_benchmark.py
+```
+
+**Output:**
+- Prints the configuration used for benchmarking.
+- Reports the average execution time and standard deviation across desired trials.
 
 ## Cleaning Up
 
