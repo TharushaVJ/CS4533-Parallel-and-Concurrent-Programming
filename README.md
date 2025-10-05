@@ -1,5 +1,4 @@
-# CS4532 - Concurrent Programming  
-## Lab 1 & Lab 2
+# CS4532 - Parallel and Concurrent Programming 
 
 This repository contains implementations and simulations designed to explore **concurrent programming concepts** using synchronization primitives such as **mutexes**, **semaphores**, and **read-write locks**.
 
