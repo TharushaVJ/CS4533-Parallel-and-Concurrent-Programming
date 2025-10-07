@@ -63,8 +63,6 @@ The console displays events in real time, including:
 * Boarding events
 * Bus departures (with number of riders)
 
-A **screenshot of sample output** is included in the submission.
-
 ---
 
 ## ⚙️ Requirements
@@ -91,13 +89,49 @@ A **screenshot of sample output** is included in the submission.
 ## 🧩 Sample Console Output (Preview)
 
 ```
-Rider 1 arrived. Waiting riders: 1  
-Rider 2 arrived. Waiting riders: 2  
-Bus 1 arrived.  
-Rider 1 boarded. Riders left to board: 1  
-Rider 2 boarded. Riders left to board: 0  
-Bus 1 departed with 2 riders.  
-Rider 3 arrived. Waiting riders: 1  
+Bus 1 arrived.
+Bus 1 departed with 0 riders.
+Rider 1 arrived. Waiting riders: 1
+Rider 2 arrived. Waiting riders: 2
+Rider 3 arrived. Waiting riders: 3
+Rider 4 arrived. Waiting riders: 4
+Rider 5 arrived. Waiting riders: 5
+Rider 6 arrived. Waiting riders: 6
+Rider 7 arrived. Waiting riders: 7
+Rider 8 arrived. Waiting riders: 8
+Rider 9 arrived. Waiting riders: 9
+Rider 10 arrived. Waiting riders: 10
+Rider 11 arrived. Waiting riders: 11
+Rider 12 arrived. Waiting riders: 12
+Rider 13 arrived. Waiting riders: 13
+Rider 14 arrived. Waiting riders: 14
+Rider 15 arrived. Waiting riders: 15
+Rider 16 arrived. Waiting riders: 16
+Rider 17 arrived. Waiting riders: 17
+Rider 18 arrived. Waiting riders: 18
+Rider 19 arrived. Waiting riders: 19
+Bus 2 arrived.
+Rider 1 boarded. Riders left to board: 18
+Rider 2 boarded. Riders left to board: 17
+Rider 3 boarded. Riders left to board: 16
+Rider 4 boarded. Riders left to board: 15
+Rider 5 boarded. Riders left to board: 14
+Rider 6 boarded. Riders left to board: 13
+Rider 7 boarded. Riders left to board: 12
+Rider 8 boarded. Riders left to board: 11
+Rider 9 boarded. Riders left to board: 10
+Rider 10 boarded. Riders left to board: 9
+Rider 11 boarded. Riders left to board: 8
+Rider 12 boarded. Riders left to board: 7
+Rider 13 boarded. Riders left to board: 6
+Rider 14 boarded. Riders left to board: 5
+Rider 20 arrived. Waiting riders: 6
+Rider 15 boarded. Riders left to board: 4
+Rider 16 boarded. Riders left to board: 3
+Rider 17 boarded. Riders left to board: 2
+Rider 18 boarded. Riders left to board: 1
+Rider 19 boarded. Riders left to board: 0
+Bus 2 departed with 19 riders. 
 ...
 ```
 

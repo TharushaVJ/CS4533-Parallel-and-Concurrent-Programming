@@ -3,9 +3,10 @@ import java.util.Random;
 
 public class BusStopSimulation {
     static final int BUS_CAPACITY = 50;
-    static final int MEAN_RIDER_ARRIVAL_MS = 30000; // 30 sec
-    static final int MEAN_BUS_ARRIVAL_MS = 1200000; // 20 min
+    static final int MEAN_RIDER_ARRIVAL_MS = 1000; // 1 sec
+    static final int MEAN_BUS_ARRIVAL_MS = 30000; // 30 sec
     static Semaphore mutex = new Semaphore(1);
+    static Semaphore multiplex = new Semaphore(BUS_CAPACITY);
     static Semaphore busArrived = new Semaphore(0);
     static Semaphore allAboard = new Semaphore(0);
     static int waitingRiders = 0;
@@ -68,6 +69,7 @@ public class BusStopSimulation {
         int id;
         public Rider(int id) { this.id = id; }
         public void run() {
+            multiplex.acquireUninterruptibly(); // Limit riders in boarding area
             mutex.acquireUninterruptibly();
             waitingRiders++;
             System.out.println("Rider " + id + " arrived. Waiting riders: " + waitingRiders);
@@ -84,6 +86,7 @@ public class BusStopSimulation {
                 allAboard.release();
             }
             mutex.release();
+            multiplex.release(); // Allow next rider into boarding area
         }
     }
 }
