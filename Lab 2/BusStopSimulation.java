@@ -3,9 +3,8 @@ import java.util.Random;
 
 public class BusStopSimulation {
     static final int BUS_CAPACITY = 50;
-    static final int MEAN_RIDER_ARRIVAL_MS = 3000; // 3 sec
-    // static final int MEAN_BUS_ARRIVAL_MS = 1200000; // 20 min
-    static final int MEAN_BUS_ARRIVAL_MS = 60000; // 1 min
+    static final int MEAN_RIDER_ARRIVAL_MS = 30000; // 30 sec
+    static final int MEAN_BUS_ARRIVAL_MS = 1200000; // 20 min
     static Semaphore mutex = new Semaphore(1);
     static Semaphore busArrived = new Semaphore(0);
     static Semaphore allAboard = new Semaphore(0);
