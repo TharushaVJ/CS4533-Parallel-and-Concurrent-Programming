@@ -1,10 +1,11 @@
-import java.util.concurrent.Semaphore;
 import java.util.Random;
+import java.util.concurrent.Semaphore;
 
 public class BusStopSimulation {
     static final int BUS_CAPACITY = 50;
-    static final int MEAN_RIDER_ARRIVAL_MS = 1000; // 1 sec
-    static final int MEAN_BUS_ARRIVAL_MS = 30000; // 30 sec
+    // Mean arrival times in milliseconds but scaled down for simulation (30 secs -> 0.5 secs and 20 mins -> 20 secs)
+    static final int MEAN_RIDER_ARRIVAL_MS = 500; // 0.5 sec
+    static final int MEAN_BUS_ARRIVAL_MS = 20000; // 20 sec
     static Semaphore mutex = new Semaphore(1);
     static Semaphore multiplex = new Semaphore(BUS_CAPACITY);
     static Semaphore busArrived = new Semaphore(0);
@@ -56,7 +57,7 @@ public class BusStopSimulation {
                 } else {
                     mutex.release();
                 }
-                System.out.println("Bus " + busId + " departed with " + ridersToBoard + " riders.");
+                System.out.println("Bus " + busId + " departed with " + ridersToBoard + " riders.");  // invoke depart
                 busId++;
             }
         }
@@ -81,7 +82,7 @@ public class BusStopSimulation {
             mutex.acquireUninterruptibly();
             waitingRiders--;
             boardingRiders--;
-            System.out.println("Rider " + id + " boarded. Riders left to board: " + boardingRiders);
+            System.out.println("Rider " + id + " boarded. Riders left to board: " + boardingRiders); 
             if (boardingRiders == 0) {
                 allAboard.release();
             }
