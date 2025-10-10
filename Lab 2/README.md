@@ -1,13 +1,6 @@
 # Lab 2: Senate Bus Synchronization Problem
 
-## 🧭 Course Information
-
-**CS4532 – Concurrent Programming**
-**Take Home Lab 2**
-
----
-
-## 📘 Overview
+## Overview
 
 This program simulates the **Senate Bus Problem** using **Java threads**, **mutexes**, and **semaphores**.
 
@@ -16,6 +9,8 @@ The simulation models a bus stop where:
 * **Riders** arrive at exponentially distributed intervals (**mean = 30 seconds**)
 * **Buses** arrive at exponentially distributed intervals (**mean = 20 minutes**)
 
+Note: since waiting for 20 minutes is not ideal for a simulation, we scaled down 20 minutes to 20 seconds and 30 seconds to 0.5 seconds proportionally.
+
 ### Simulation Rules
 
 * When a bus arrives, **all waiting riders** can board (up to a **maximum capacity of 50**).
@@ -23,11 +18,18 @@ The simulation models a bus stop where:
 * Once all selected riders have boarded, the bus **departs**.
 * If the bus arrives and **no riders** are waiting, it **departs immediately**.
 
-This problem is based on the original Senate Bus Problem from *"The Little Book of Semaphores"* (p.211).
+---
+
+## Requirements
+
+* **Java 8** or higher
+* **Operating System:** Any (Windows / macOS / Linux)
 
 ---
 
-## 🚀 How to Run
+## How to Run
+
+---
 
 ### 1. Open Terminal
 
@@ -52,9 +54,7 @@ java BusStopSimulation
 The program runs continuously, simulating bus and rider arrivals.
 Use `Ctrl + C` to stop execution.
 
----
-
-## 🖥️ Output
+## Output
 
 The console displays events in real time, including:
 
@@ -65,28 +65,7 @@ The console displays events in real time, including:
 
 ---
 
-## ⚙️ Requirements
-
-* **Java 8** or higher
-* **Operating System:** Any (Windows / macOS / Linux)
-
----
-
-## 👥 Authors
-
-* **Meddepola M.A.C.T.** 
-* **Wijewardana L.T.I.** 
-
----
-
-## 📚 References
-
-* Allen B. Downey, *“The Little Book of Semaphores”*, 2nd Edition, p. 211
-* CS4532 Course Materials – University of Moratuwa
-
----
-
-## 🧩 Sample Console Output (Preview)
+## Sample Console Output (Preview)
 
 ```
 Bus 1 arrived.
